@@ -1,2 +1,2 @@
 # bunta
-bunta is a chord progression generator
+*bunta* is a chord progression generator
