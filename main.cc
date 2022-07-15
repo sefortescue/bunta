@@ -25,8 +25,9 @@ int main(int argc, char *argv[]) {
 	string bArg = "";
 	string iArg = "";
 	
-	// varible to store option characters
+	// varibles to store option characters for use and error messages
 	int opt;
+	char optOut;
 
 	// print my own error messages	
 	opterr = 0;
@@ -35,10 +36,12 @@ int main(int argc, char *argv[]) {
 	while ((opt = getopt(argc,argv,"+:s:b:i:")) != -1) {
 		switch (opt) {
 		case '?':
-			cerr << program_name << ": unknown option given: -" << optopt << "\n";
+			optOut = optopt;
+			cerr << program_name << ": unknown option given: -" << optOut << "\n";
 			return 1;
 		case ':':
-			cerr << program_name << ": missing option argument at: -" << optopt << "\n";
+			optOut = optopt;
+			cerr << program_name << ": missing option argument at: -" << optOut << "\n";
 			return 1;
 		case 's':
 			if (sFlag) {
