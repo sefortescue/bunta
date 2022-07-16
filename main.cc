@@ -11,7 +11,6 @@ using std::string;
 string program_name;
 
 int main(int argc, char *argv[]) {
-
 	// store program name for error messages	
 	program_name = argv[0];
 
@@ -22,10 +21,10 @@ int main(int argc, char *argv[]) {
 	bool nFlag = false;
 
 	// option args
-	string sArg = "";
-	string bArg = "";
-	string iArg = "";
-	string nArg = "";
+	string sArg;
+	string bArg;
+	string iArg;
+	string nArg;
 	
 	// varibles to store option characters for use and error messages
 	int opt;
@@ -34,7 +33,7 @@ int main(int argc, char *argv[]) {
 	// print my own error messages	
 	opterr = 0;
 
-	// while there are still remaining options set a flag and store any arguments
+	// while there are still remaining options set flags and store any arguments as strings
 	while ((opt = getopt(argc,argv,"+:s:b:i:n:")) != -1) {
 		switch (opt) {
 		case '?':
@@ -79,6 +78,8 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 	}
+
+	// RUN CHECKS ON OPTION ARGUMENTS HERE
 
 
 	return 0;
