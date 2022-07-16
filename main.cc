@@ -19,11 +19,13 @@ int main(int argc, char *argv[]) {
 	bool sFlag = false;
 	bool bFlag = false;
 	bool iFlag = false;
+	bool nFlag = false;
 
 	// option args
 	string sArg = "";
 	string bArg = "";
 	string iArg = "";
+	string nArg = "";
 	
 	// varibles to store option characters for use and error messages
 	int opt;
@@ -32,8 +34,8 @@ int main(int argc, char *argv[]) {
 	// print my own error messages	
 	opterr = 0;
 
-	// while there are still remaining legal options set a flag and store any arguments
-	while ((opt = getopt(argc,argv,"+:s:b:i:")) != -1) {
+	// while there are still remaining options set a flag and store any arguments
+	while ((opt = getopt(argc,argv,"+:s:b:i:n:")) != -1) {
 		switch (opt) {
 		case '?':
 			optOut = optopt;
@@ -68,6 +70,14 @@ int main(int argc, char *argv[]) {
 			iArg = optarg;
 			break;
 		}
+		case 'n':
+			if (nFlag) {
+				cerr << program_name << ": -n given more than once, arg use is ambiguous." << "\n";
+				return 1;
+			}
+			nFlag = true;
+			nArg = optarg;
+			break;
 	}
 
 
