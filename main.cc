@@ -69,7 +69,6 @@ int main(int argc, char *argv[]) {
 			iFlag = true;
 			iArg = optarg;
 			break;
-		}
 		case 'n':
 			if (nFlag) {
 				cerr << program_name << ": -n given more than once, arg use is ambiguous." << "\n";
@@ -78,6 +77,7 @@ int main(int argc, char *argv[]) {
 			nFlag = true;
 			nArg = optarg;
 			break;
+		}
 	}
 
 
