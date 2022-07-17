@@ -30,10 +30,10 @@ int main(int argc, char *argv[]) {
 	int opt;
 	char optOut;
 
-	// print my own error messages	
+	// print my own error messages for options
 	opterr = 0;
 
-	// while there are still remaining options set flags and store any arguments as strings
+	// while there are still remaining options, set flags and store any arguments as strings
 	while ((opt = getopt(argc,argv,"+:s:b:i:n:")) != -1) {
 		switch (opt) {
 		case '?':

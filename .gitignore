@@ -35,7 +35,7 @@ bunta
 # CMake
 CMakeCache.txt
 /CMakeFiles
-*.cmake
+cmake_install.cmake
 
 # make
 Makefile
