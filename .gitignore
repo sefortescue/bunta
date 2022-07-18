@@ -33,9 +33,5 @@
 bunta
 
 # CMake
-CMakeCache.txt
-/CMakeFiles
-cmake_install.cmake
-
-# make
-Makefile
+/build
+/bin
