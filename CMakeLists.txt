@@ -1,31 +1,30 @@
-cmake_minimum_required(VERSION 3.13)
-
+cmake_minimum_required(VERSION 3.13.0)
 project(bunta)
 
-# Include macro to force out-of-source build
-include(tools/MacroOutOfSourceBuild.cmake)
+# Make tools accessible
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tools")
 
-# Set output directory for executables
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+# Include macro to force out-of-source build
+include(MacroOutOfSourceBuild.cmake)
 
 # Build options
-option(BUILD_TESTS "build test executable" OFF)
+option(BUILD_TESTS "Build test executable?" ON)
 
-# Increasingly strict compiler options.
+# Set output directory for executables libraries
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-add_compile_options(-Wall)
-add_compile_options(-Wextra -Wpedantic)
-add_compile_options(-fmessage-length=80 -fno-diagnostics-show-option
-    -fstack-protector-all -g -O3 -std=c++17 -Walloc-zero -Walloca
-    -Wctor-dtor-privacy -Wduplicated-cond -Wduplicated-branches
-    -Werror -Wextra-semi -Wfatal-errors -Winit-self -Wlogical-op
-    -Wold-style-cast -Wshadow -Wunused-const-variable=1
-    -Wzero-as-null-pointer-constant)
+# Default compiler options.
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic 
+	-fmessage-length=80 -fno-diagnostics-show-option 
+	-fstack-protector-all -g -O3 -Walloc-zero -Walloca 
+	-Wctor-dtor-privacy -Wduplicated-cond -Wduplicated-branches 
+	-Werror -Wextra-semi -Wfatal-errors -Winit-self -Wlogical-op 
+	-Wold-style-cast -Wshadow -Wunused-const-variable=1 
+	-Wzero-as-null-pointer-constant")
 
-# List of source files.
-
-set(SRC_FILES main.cc)
- 
-# Create the executable 'bunta' from the source files.
-
-add_executable(${PROJECT_NAME} ${PROG_FILES})
+# Add subdirectories
+add_subdirectory(src)
+if (BUILD_TESTS)
+	add_subdirectory(tests)
+endif (BUILD_TESTS)

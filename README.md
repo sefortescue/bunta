@@ -7,3 +7,7 @@ cd build
 cmake ..
 make
 ```
+
+```
+cmake -D DBUILD_TESTS=ON ..
+```

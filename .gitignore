@@ -30,8 +30,6 @@
 *.exe
 *.out
 *.app
-bunta
 
-# CMake
+# CMake Build Files
 /build
-/bin
