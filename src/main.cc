@@ -2,6 +2,10 @@
 #include <string>
 #include <unistd.h>
 #include <getopt.h>
+#include "input/validateArgs.h"
+#include "progression/progression.h"
+#include "generation/treeSearch.h"
+#include "output/printProgression.h"
 
 using std::cout;
 using std::cerr;

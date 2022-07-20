@@ -2,12 +2,12 @@
 *bunta* is a chord progression generator
 
 ```
-makedir build
+makedir -p build
 cd build
 cmake ..
 make
 ```
 
 ```
-cmake -D DBUILD_TESTS=ON ..
+cmake -D DBUILD_TESTS=OFF ..
 ```

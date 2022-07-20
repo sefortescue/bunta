@@ -1,11 +1,26 @@
-cmake_minimum_required(VERSION 3.13.0)
-project(bunta)
+#[[
+bunta is a chord progression generator. 
+Copyright (C) 2022  Sam Fortescue
 
-# Make tools accessible
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/tools")
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+]]
+
+cmake_minimum_required(VERSION 3.13.0)
+project(bunta VERSION 0.1.0 LANGUAGES CXX)
 
 # Include macro to force out-of-source build
-include(MacroOutOfSourceBuild.cmake)
+include(./tools/MacroOutOfSourceBuild.cmake)
 
 # Build options
 option(BUILD_TESTS "Build test executable?" ON)
@@ -13,15 +28,6 @@ option(BUILD_TESTS "Build test executable?" ON)
 # Set output directory for executables libraries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-
-# Default compiler options.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic 
-	-fmessage-length=80 -fno-diagnostics-show-option 
-	-fstack-protector-all -g -O3 -Walloc-zero -Walloca 
-	-Wctor-dtor-privacy -Wduplicated-cond -Wduplicated-branches 
-	-Werror -Wextra-semi -Wfatal-errors -Winit-self -Wlogical-op 
-	-Wold-style-cast -Wshadow -Wunused-const-variable=1 
-	-Wzero-as-null-pointer-constant")
 
 # Add subdirectories
 add_subdirectory(src)
